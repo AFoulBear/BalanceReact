@@ -1,0 +1,50 @@
+$break-small: 600px;
+$break-large: 1200px;
+
+@media screen and (min-width: $break-large) {
+    body{
+        font-family: 'Montserrat', sans-serif;
+        background-color: rgb(0,107,224);
+        min-height: 900px;
+    
+        .inner-wrapper{
+            padding-top:10vh;
+            background-color: white;
+            min-height: 1000px;
+            height: 100%;
+    
+            button{
+               border-radius: 0; 
+            }
+            input{
+                border-radius: 0;
+            }
+    
+        }
+    }
+  }
+
+  @media screen and (max-width: $break-small){
+    body{
+        font-family: 'Montserrat', sans-serif;
+        background-color: white;
+        min-height: 900px;
+    
+        .inner-wrapper{
+            padding-top:10vh;
+            background-color: white;
+            min-height: 1000px;
+            height: 100%;
+    
+            button{
+               border-radius: 0; 
+            }
+            input{
+                border-radius: 0;
+            }
+    
+        }
+    }
+  }
+
+
