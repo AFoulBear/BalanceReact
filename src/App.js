@@ -61,6 +61,8 @@ class App extends Component {
       }
       console.log(JSON.stringify(data))
 
+      //publish test comment...
+
       axios.post(`https://ebrownbalanceapi.azurewebsites.net/api/Submission`, data )
         .then(res => {
           console.log(res);
