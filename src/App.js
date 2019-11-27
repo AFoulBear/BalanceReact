@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import './main.css';
-import axios from 'axios';
+//import axios from 'axios';
 
 const emailRegex = RegExp(/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/);
 
@@ -61,28 +61,29 @@ class App extends Component {
       }
       console.log(JSON.stringify(data))
 
-      //publish test comment...
-
-      axios.post(`https://ebrownbalanceapi.azurewebsites.net/api/Submission`, data )
-        .then(res => {
-          console.log(res);
-          console.log(res.data);
-        });
-
-      /*
+      
       fetch("https://ebrownbalanceapi.azurewebsites.net/api/Submission",{
         method: 'post',
         body: JSON.stringify(data),
-        mode: 'no-cors',
+        mode: 'cors',
         cache: 'no-cache',
         credentials: 'same-origin',
         headers:{
-          'Content-type': 'application/json'
+          'Content-type': 'application/json',
+          'Access-Control-Allow-Origin':'*'
         },
         redirect: 'follow', 
         referrer: 'no-referrer'
         
-      })*/
+      }).then(function(response) {
+        console.log(response.status);
+        if(response.status.toString()=== "204"){
+          console.log("append message!");
+          //Cant seem to get the validation message to persist
+          //var isSuccessful = true;
+          window.location.reload(false);
+        }
+      })
     } else {
       console.error('FORM INVALID - DISPLAY ERROR MESSAGE')
     }
@@ -163,13 +164,19 @@ class App extends Component {
 
                 </div>
                 {formErrors.firstName.length > 0 && (
-                    <span className="errorMessage">{formErrors.firstName}</span>
+                    <div>
+                      <span className="errorMessage">{formErrors.firstName}</span>
+                    </div>
                   )}
                 {formErrors.lastName.length > 0 && (
-                  <span className="errorMessage">{formErrors.lastName}</span>
+                  <div>
+                    <span className="errorMessage">{formErrors.lastName}</span>
+                  </div>
                 )}
                 {formErrors.email.length > 0 && (
-                  <span className="errorMessage">{formErrors.email}</span>
+                  <div>
+                    <span className="errorMessage">{formErrors.email}</span>
+                  </div>
                 )}
               </form>
 

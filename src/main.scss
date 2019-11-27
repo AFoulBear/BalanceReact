@@ -1,6 +1,16 @@
 $break-small: 600px;
 $break-large: 1200px;
 
+body{
+
+    .errorMessage{
+        color: red;
+    }
+    .successMessage{
+        color: rgb(0,107,224);
+    }
+}
+
 @media screen and (min-width: $break-large) {
     body{
         font-family: 'Montserrat', sans-serif;
